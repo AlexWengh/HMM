@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HanMeiMei Automation System Quick Start</title>
+<style type="text/css">
+body div p {
+	font-family: Arial, Helvetica, sans-serif;
+}
+body div blockquote strong {
+	font-family: Arial, Helvetica, sans-serif;
+}
+body div ul li {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+
+<body>
+<div>
+  <h1 align="center">HanMeiMei Automation System Quick Start
+  </h1>
+  <p>&nbsp;</p>
+  <h2 align="left">Component 1: Run Commands  </h2>
+  <blockquote>
+    <p align="left">This component provides you the ablility to run several <strong><em>shell</em></strong> or <strong><em>cmd</em></strong> commands together automatically.</p>
+    <p align="left">you can add commands to the list by clicking the <em><strong>Add Command</strong></em> Hyperlink. The command can also by modified by right click one item of the commands list.</p>
+    <p align="left"><img src="images/addCommandsLink.jpg" width="282" height="112" /> </p>
+    <p align="left">After you added the commands, you can click the <strong><em>Run  Commands</em></strong> menu to start them.</p>
+    <p align="left"><img src="images/runCommands.jpg" alt="" width="362" height="231" /></p>
+    <p align="left">The command line output will be shown at <strong><em>console window</em></strong>.</p>
+    <p align="left"><img src="images/commandConsole.jpg" alt="" width="1000" height="212" /></p>
+    <p align="left">&nbsp;</p>
+  </blockquote>
+  <h2>Component 2: Template Variables</h2>
+  <blockquote>
+    <p align="left">Template variable is used to replace the string path of commands. </p>
+    <p align="left">This machenism can be used to easy the deployment of the same commands across different machines with different paths.</p>
+    <p align="left">There is two default built in template variable <em><strong>${HMMDIR}</strong></em> and <em><strong>${BUILD}</strong></em><strong></strong></p>
+    <p align="left">For example, if you set ${HMMDIR} like this:</p>
+    <p align="left"><img src="images/hmmdir.jpg" alt="" width="403" height="66" /></p>
+    <p align="left">Then if you add following command:</p>
+    <p align="left"><img src="images/cdHmmDir.jpg" alt="" width="194" height="74" /></p>
+    <p align="left">The <strong><em>cd ${HMMDIR}</em></strong> at runtime will be automatically replaced to <em><strong>cd C:\HanMeiMei</strong></em>.</p>
+    <p align="left">Template variable can be added by click the <em><strong>Add Template Variable</strong></em> hyperlink. It can also be modified by right click one item in the template variable list.</p>
+    <p align="left"><img src="images/addTemplateVariable.jpg" alt="" width="160" height="28" /></p>
+    <p align="left">When adding command, if the command is with the <strong><em>--template</em></strong> suffix, and the command is a batch file, all the template variables inside the batch file with be replaced to the real value during runtime.</p>
+    <p align="left">For example if we have a batch file <em><strong>psy.bat</strong></em>, which contains:</p>
+    <p align="left"><em><strong>echo ${my}</strong></em></p>
+    <p align="left">The ${my} is defined in template variable list:</p>
+    <p align="left"><img src="images/myVariable.jpg" alt="" width="348" height="79" /></p>
+    <p align="left">and we specify the batch file with <em><strong>--template</strong></em><strong></strong> when adding the command:</p>
+    <p align="left"><img src="images/template.jpg" alt="" width="700" height="260" /></p>
+    <p align="left">The output would be:</p>
+    <p align="left"><img src="images/runtemplate.jpg" alt="" width="253" height="186" /></p>
+    <p align="left">&nbsp;</p>
+  </blockquote>
+  <h2>Component 3: Scheduled Build</h2>
+  <blockquote>
+    <p>The HanMeiMei automation system can be configured to be a <em><strong>Server</strong></em>, or <strong><em>Client</em></strong><em></em>, the default is Server.</p>
+    <p><strong>Server</strong>: Takes the role as a dispatcher, Clients  obtains source code from server through the FTP software on the server machine.</p>
+    <p><strong>Clinet</strong>: May be installed on several different machine with different OS, communicate with server to download the source code on server machine for build.</p>
+    <p>When a scheduled build is started, the client does following:</p>
+    <p>1. Communicate with the server to obtain the FTP credentials.</p>
+    <p>2. Download source codes from server machine's installed FTP software with the obtained credentials.</p>
+    <p>3. Run the configured commands to build.</p>
+    <p>The Server only does the  <em><strong>No.3</strong></em> procedure above.</p>
+    <p><img src="images/build.jpg" alt="" width="343" height="142" /></p>
+    <p>The <strong><em>Scheduled Build Time</em></strong> is used to schedule a build at a specified time.</p>
+    <p>The <strong><em>Working Directory</em></strong> is used to change the template variable <em><strong>${HMMDIR}</strong></em>, which is the root directory where the client download source files into.</p>
+    <p>The <em><strong>FTP Configuration</strong></em> is used to set up ftp credentials on server, so that client can obtain these information from server.</p>
+    <p>After all these settings are done, from the menu, you can click the <em><strong>Schedule</strong></em> command to make the scheduled build enabled.</p>
+    <p><img src="images/scheduleMenu.jpg" alt="" width="202" height="169" /></p>
+    <p><strong>IMPORTANT NOTES:</strong></p>
+    <p>The server machine must install a ftp server software, ftp credentials configured in <em><strong>FTP Configuration</strong></em> should be the same credentials configured in the ftp server software.</p>
+    <p> The client only gets ftp credentials through HanMeiMei software on server machine, after that client directly talk to the ftp server software to download source files.</p>
+    <p>The source files need to be built must be all contained in a folder, here we call it <strong><em>Build Folder.</em></strong><em></em></p>
+    <p>The name of the <strong><em>Build Folder</em></strong> must follow the pattern <em><strong>yyyy-MM-dd_HH_mm_ss</strong></em><strong></strong>, which is the default value of template variable <em><strong>${BUILD}</strong></em><strong></strong>. </p>
+    <p>For example, the name of the <strong><em>Build Folder</em></strong>  can be 2012-11-12_13_14_15</p>
+    <p>If the <strong><em>Build Folder</em></strong> is on server, the parent folder of the <strong><em>Build Folder</em></strong> must be set to the root folder of the ftp server software.</p>
+    <p>Whenever client connects to the ftp server software, client will find the latest <strong><em>Build Folder</em></strong> and download it under ${HMMDIR}</p>
+    <p>When you want to add a command to call a batch file inside the <strong><em>Build Folder</em></strong> after download completed, you can use ${HMMDIR}\${BUILD} to get the path of <strong><em>Build Folder</em></strong>.</p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <h2>Component 4: Web Automation</h2>
+  <blockquote>
+    <p>For this initial <em><strong>0.1 Release</strong></em>, there is some web automation facilities, but is inadequate to do a full set web automation test.</p>
+    <p>The computer runs HanMeiMei web automation <em><strong>must have firefox installed</strong></em>.</p>
+    <p>From the menu, choose <em><strong>New</strong></em> to create a new automation configuration, choose <strong><em>Open</em></strong> to open an exist automation configuration file.</p>
+    <p><img src="images/newautomation.jpg" alt="" width="241" height="130" /></p>
+    <p>Press the <em><strong>Web</strong></em> button on the toolbar of <em><strong>Automation Editor</strong></em> to add top level elements to the tree view list.</p>
+    <p><img src="images/toplevel.jpg" width="226" height="139" /></p>
+    <p><strong><em>Find</em></strong> is used to find a html element on a web page.</p>
+    <p><strong><em>Navigate</em></strong> is used to navigate the web browser  to show page from desired url.</p>
+    <p><strong><em>Wait</em></strong> is used to suspend the web automation thread for a certain time.</p>
+<p>Currently Only the <em><strong>Find</strong></em><strong></strong> element can have sub elements:</p>
+    <p><img src="images/findSub.jpg" width="272" height="200" /></p>
+    <p><strong><em>Input</em></strong> is used to input some text into the html element if this element allows input.</p>
+    <p><strong><em>Submit</em></strong> is used to perform submit behavior of an html form which current element is contained in.</p>
+    <p><strong><em>Click</em></strong> is used to perform a click operation on current element.</p>
+    <p><strong><em>Text</em></strong> is used to get the text value of a web element and set the retrieved value to a <strong><em>Variable</em></strong> logic element.</p>
+    <p><strong><em>Select</em></strong> is used to select a html checkbox or radio button inside current element.</p>
+    <p>All these automation configurations requires the user <em><strong>have html knowledge</strong></em>, at least he should know the id of the html element he wants to operation.</p>
+    <p>Here is a simple configuration for automatically open google and search for word <strong><em>eclipse</em></strong>:</p>
+    <p><img src="images/sample.jpg" alt="" width="370" height="152" /></p>
+    <p>You can start to run the configuration by clicking:</p>
+    <p> <img src="images/start.jpg" alt="" width="76" height="37" /></p>
+    <p>or save it to an xml from menu:</p>
+    <p><img src="images/save.jpg" alt="" width="184" height="149" /></p>
+    <p>Also the saved xml file can be directly runned as a command together with other commands.</p>
+    <p>The prefix keyword <em><strong>auto</strong></em> is used to identify the file is an automation configuration file.</p>
+    <p><img src="images/auto.jpg" alt="" width="700" height="260" /></p>
+    <p>The automation configuration script file execution result will be shown on the <em><strong>console window</strong></em>.</p>
+    <p> You can switch the console window between <em><strong>Command Message Output</strong></em> and <em><strong>Automation Message Output</strong></em>.</p>
+    <p><img src="images/output.jpg" alt="" width="710" height="158" /></p>
+    <p>The web automation uses library <em><strong>Selenium</strong></em>, provided by <strong><em>ThoughtWorks</em></strong>, you can get more information about <em><strong>Selenium</strong></em><strong></strong> here:</p>
+    <p><strong><a href="http://seleniumhq.org" target="_blank"><em>http://seleniumhq.org</em></a></strong></p>
+    <p>&nbsp;</p>
+    <p>For <em><strong>0.2</strong></em> Release, The<strong> Logic Configuration </strong>has been added, below figure describs a scenario:</p>
+    <p><img src="images/logicConfigExample.jpg" width="389" height="362" /></p>
+    <p>Here is the corresponding response:</p>
+    <p><img src="images/logicConfigExampleOutput.jpg" width="359" height="257" /></p>
+    <p>Here I don't want to say more about how to use <strong>Logic Configuration</strong> to generate test logic, this is easy to discover by yourself.    </p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <div style="visibility:hidden">
+    <h2>Furture Plan
+    <br/>
+    </h2>
+    <ul>
+    <li>Add <em><strong>SSH connect</strong></em>, <strong><em>send</em></strong>, <em><strong>disconnect</strong></em> functionality to support SSH remote   execution automation.</li><br/>
+      <li>Implement a <em><strong>Python Source Code Editor</strong></em>, with <strong><em>Syntax Coloring</em></strong>, <strong><em>IntelliSense, Debug</em></strong>, <em><strong>Run</strong></em>, <em><strong>BreakPoint</strong></em> support, so that for simple automation, just use GUI configuration, for not simple task, write python code. And extend the web automation and ssh automation to a python external self defined library.</li><br/>
+      <li>Change the Automation Editor implementation completely to eclipse EMF framework.</li><br/>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

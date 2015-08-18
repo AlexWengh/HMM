@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="HanMeiMei Automation System" uid="HMM_AUTOMATION" id="HMM.HMM" application="HMM.application" version="0.1" useFeatures="false" includeLaunchers="true">
+
+   <aboutInfo>
+      <image path="/HMM/images/brand/about.png"/>
+      <text>
+         天然ボケ change the world!
+
+This product is licensed under the Eclipse Public License (EPL).
+http://www.eclipse.org/org/documents/epl-v10.php
+
+All Rights Reserved.
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx512m</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages i16="/HMM/images/brand/16.png" i32="/HMM/images/brand/32.png" i48="/HMM/images/brand/48.png" i64="/HMM/images/brand/64.png" i128="/HMM/images/brand/128.png"/>
+
+   <launcher name="HanMeiMei">
+      <linux icon="/HMM/images/brand/HanMeiMei-64x64-32.xpm"/>
+      <solaris/>
+      <win useIco="true">
+         <ico path="/HMM/images/brand/HanMeiMei.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+
+   <vm>
+      <linux include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
+      <windows include="true">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</windows>
+   </vm>
+
+   <license>
+        <url>http://www.eclipse.org/org/documents/epl-v10.php</url>
+        <text>
+   This product is licensed under the Eclipse Public License (EPL).
+         </text>
+   </license>
+
+   <plugins>
+      <plugin id="HMM"/>
+      <plugin id="com.ibm.icu"/>
+      <plugin id="javax.servlet"/>
+      <plugin id="org.eclipse.ant.core"/>
+      <plugin id="org.eclipse.compare.core"/>
+      <plugin id="org.eclipse.core.commands"/>
+      <plugin id="org.eclipse.core.contenttype"/>
+      <plugin id="org.eclipse.core.databinding"/>
+      <plugin id="org.eclipse.core.databinding.observable"/>
+      <plugin id="org.eclipse.core.databinding.property"/>
+      <plugin id="org.eclipse.core.expressions"/>
+      <plugin id="org.eclipse.core.filebuffers"/>
+      <plugin id="org.eclipse.core.filesystem"/>
+      <plugin id="org.eclipse.core.filesystem.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.jobs"/>
+      <plugin id="org.eclipse.core.resources"/>
+      <plugin id="org.eclipse.core.resources.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.core.runtime"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.auth"/>
+      <plugin id="org.eclipse.core.runtime.compatibility.registry" fragment="true"/>
+      <plugin id="org.eclipse.core.variables"/>
+      <plugin id="org.eclipse.equinox.app"/>
+      <plugin id="org.eclipse.equinox.common"/>
+      <plugin id="org.eclipse.equinox.p2.core"/>
+      <plugin id="org.eclipse.equinox.p2.engine"/>
+      <plugin id="org.eclipse.equinox.p2.metadata"/>
+      <plugin id="org.eclipse.equinox.p2.metadata.repository"/>
+      <plugin id="org.eclipse.equinox.p2.repository"/>
+      <plugin id="org.eclipse.equinox.preferences"/>
+      <plugin id="org.eclipse.equinox.registry"/>
+      <plugin id="org.eclipse.equinox.security"/>
+      <plugin id="org.eclipse.equinox.security.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.help"/>
+      <plugin id="org.eclipse.jface"/>
+      <plugin id="org.eclipse.jface.databinding"/>
+      <plugin id="org.eclipse.jface.text"/>
+      <plugin id="org.eclipse.osgi"/>
+      <plugin id="org.eclipse.osgi.services"/>
+      <plugin id="org.eclipse.swt"/>
+      <plugin id="org.eclipse.swt.win32.win32.x86" fragment="true"/>
+      <plugin id="org.eclipse.text"/>
+      <plugin id="org.eclipse.ui"/>
+      <plugin id="org.eclipse.ui.console"/>
+      <plugin id="org.eclipse.ui.editors"/>
+      <plugin id="org.eclipse.ui.forms"/>
+      <plugin id="org.eclipse.ui.ide"/>
+      <plugin id="org.eclipse.ui.views"/>
+      <plugin id="org.eclipse.ui.win32" fragment="true"/>
+      <plugin id="org.eclipse.ui.workbench"/>
+      <plugin id="org.eclipse.ui.workbench.texteditor"/>
+   </plugins>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.osgi" autoStart="true" startLevel="-1" />
+   </configurations>
+
+</product>
